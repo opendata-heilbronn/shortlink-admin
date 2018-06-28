@@ -1,0 +1,17 @@
+<div class="card-columns">
+  <ng-container [ngSwitch]="newMode">
+    <div class="card" *ngSwitchCase="false">
+      <div class="card-body">
+        <button class="btn btn-primary btn-block" (click)="newMode = true">➕ Neu</button>
+      </div>
+    </div>
+    <app-create-shortlink dest="" code="" *ngSwitchCase="true" (done)="onShortlinkCreated()"></app-create-shortlink>
+  </ng-container>
+
+  <ng-container *ngFor="let entry of shortlinks">
+    <app-shortlink [entry]="entry" (onEdit)="onEdit($event)" *ngIf="entry !== editEntry else editElse"></app-shortlink>
+    <ng-template #editElse>
+      <app-create-shortlink [dest]="entry.dest" [code]="entry.code" (done)="onShortlinkUpdated()"></app-create-shortlink>
+    </ng-template>
+  </ng-container>
+</div>

@@ -1,0 +1,22 @@
+<div class="card">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()">
+      <label for="code">Shortlink-Code</label>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">https://cfhn.it/</span>
+        </div>
+        <input type="text" name="code" id="code" [(ngModel)]="code" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="dest">Ziel</label>
+        <input type="text" name="dest" id="dest" [(ngModel)]="dest" class="form-control">
+      </div>
+      <div class="form-group d-flex justify-content-end">
+        <button type="button" class="btn btn-outline-secondary m-1" (click)="onCancel()">Abbrechen</button>
+        <input type="submit" value="Speichern" class="btn btn-outline-primary m-1">
+      </div>
+    </form>
+  </div>
+</div>
